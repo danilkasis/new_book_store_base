@@ -6,7 +6,6 @@ import java.util.UUID;
 public class PublishingHouse {
 
     private final String publishingHouseId;
-
     private String houseName;
     private List<Book> bookList;
 
@@ -24,15 +23,11 @@ public class PublishingHouse {
         }
 
         this.houseName = houseName;
-
-
     }
-
 
     public String getPublishingHouseId() {
         return publishingHouseId;
     }
-
 
     public String getHouseName() {
         return houseName;

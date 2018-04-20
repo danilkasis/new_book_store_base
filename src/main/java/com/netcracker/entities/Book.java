@@ -10,11 +10,9 @@ public class Book {
 
     private Author author;
     private PublishingHouse publishingHouse;
-
     private String bookName;
     private String publishingDate;
     private String booksLanguage;
-
     private List<Store> storeList;
 
 
@@ -38,7 +36,6 @@ public class Book {
         else{
             this.publishingHouseId = publishingHouse.getPublishingHouseId();
         }
-
 
         this.bookName = bookName;
         this.publishingDate = publishingDate;

@@ -36,9 +36,6 @@ public class AuthorRepository {
         namedParameterJdbcTemplate.update(sql, namedParameters);
     }
 
-
-
-
     public List<Author> loadAll() {
 
         String sql = "SELECT * FROM AUTHOR";
@@ -136,12 +133,12 @@ public class AuthorRepository {
         return result;
     }
 
-    public Author loadByLastNameWithBook(String lastName){
+    public List<Author> loadByLastNameWithBook(String lastName){
         String sql = "SELECT * FROM author aut JOIN book bo ON aut.BOOK_ID = bo.BOOK_ID WHERE LAST_NAME=:lastname";
         Map namedParameters = new HashMap();
         namedParameters.put("lastname", lastName);
 
-        Author result = namedParameterJdbcTemplate.queryForObject(
+        List<Author> result = namedParameterJdbcTemplate.query(
                 sql,
                 namedParameters,
                 new AuthorBookMapper());

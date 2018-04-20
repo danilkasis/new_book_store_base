@@ -1,6 +1,5 @@
 package com.netcracker.entities;
 
-
 import java.util.UUID;
 
 public class Author {
@@ -13,7 +12,6 @@ public class Author {
     private String fatherName;
 
     private Book book;
-
 
     public Author() {
         this.authorId = UUID.randomUUID().toString();
@@ -57,6 +55,7 @@ public class Author {
     public String getFirstName() {
         return firstName;
     }
+
 
     public String getLastName() {
         return lastName;

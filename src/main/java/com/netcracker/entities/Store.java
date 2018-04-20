@@ -7,15 +7,10 @@ public class Store {
 
     private final String storeId;
 
-
     private String streetName;
     private String numberOfHouse;
     private String storeName;
-
-
     private List<Book> bookList;
-
-
 
     public Store(String storeId, String storeName, String streetName, String numberOfHouse){
 
@@ -33,7 +28,6 @@ public class Store {
 
     }
 
-
     public void setBookList(List<Book> bookList) {
         this.bookList = bookList;
     }
@@ -45,7 +39,6 @@ public class Store {
     public String getStoreId() {
         return storeId;
     }
-
 
     public String getStreetName() {
         return streetName;
@@ -62,7 +55,6 @@ public class Store {
     public List<Book> getBookList() {
         return bookList;
     }
-
 
     public void setStreetName(String streetName) {
         this.streetName = streetName;

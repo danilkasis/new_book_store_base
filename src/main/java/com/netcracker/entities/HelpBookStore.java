@@ -8,10 +8,6 @@ public class HelpBookStore {
     private String bookId;
     private String storeId;
 
-    private Book bk;
-    private Store str;
-
-
     public HelpBookStore() {
         this.tableId = UUID.randomUUID().toString();
     }
@@ -35,9 +31,6 @@ public class HelpBookStore {
             this.storeId = store.getStoreId();
         }
 
-        this.bk = book;
-        this.str = store;
-
     }
 
     public void setBookId(String bookId) {
@@ -46,14 +39,6 @@ public class HelpBookStore {
 
     public void setStoreId(String storeId) {
         this.storeId = storeId;
-    }
-
-    public void setBk(Book bk) {
-        this.bk = bk;
-    }
-
-    public void setStr(Store str) {
-        this.str = str;
     }
 
     public String getTableId() {
@@ -66,13 +51,5 @@ public class HelpBookStore {
 
     public String getStoreId() {
         return storeId;
-    }
-
-    public Book getBk() {
-        return bk;
-    }
-
-    public Store getStr() {
-        return str;
     }
 }

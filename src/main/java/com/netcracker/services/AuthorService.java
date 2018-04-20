@@ -1,6 +1,7 @@
 package com.netcracker.services;
 
 import com.netcracker.infrastructure.repositories.AuthorRepository;
+//import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.netcracker.entities.Author;
@@ -13,12 +14,12 @@ import java.util.List;
 @Transactional
 public class AuthorService {
 
-    @Autowired
-    public AuthorRepository authorRepository;
+    private AuthorRepository authorRepository;
 
-//    public AuthorService(AuthorRepository authorRepository){
-//        this.authorRepository = authorRepository;
-//    }
+    @Autowired
+    public AuthorService(AuthorRepository authorRepository){
+        this.authorRepository = authorRepository;
+    }
 
     public void insert(Author author) {
         authorRepository.insert(author);
@@ -56,7 +57,7 @@ public class AuthorService {
         return authorRepository.loadByIdWithBook(id);
     }
 
-    public Author loadByLastNameWithBook(String lastName){
+    public List<Author> loadByLastNameWithBook(String lastName){
         return authorRepository.loadByLastNameWithBook(lastName);
     }
 

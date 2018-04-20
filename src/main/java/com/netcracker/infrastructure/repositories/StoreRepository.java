@@ -127,18 +127,4 @@ public class StoreRepository {
         namedParameterJdbcTemplate.update(sql,namedParameters);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
