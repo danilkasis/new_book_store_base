@@ -1,19 +1,23 @@
 package com.netcracker.sockets;
 
+import org.springframework.scheduling.support.SimpleTriggerContext;
+
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.RecursiveAction;
+import java.util.concurrent.RecursiveTask;
 
 
-public class PortScanner extends RecursiveAction {
+public class PortScanner extends RecursiveTask {
 
-    private final String IP = "195.19.34.72"; //ОЧЕНЬ ВАЖНО ПИСАТЬ СВОЙ IP
+    private final String IP = "195.19.45.225"; //ОЧЕНЬ ВАЖНО ПИСАТЬ СВОЙ IP
 
     private int minPort;
     private int maxPort;
     private int range = 20;
-
+    private static CopyOnWriteArrayList<String> result = new CopyOnWriteArrayList<>();
 
     public PortScanner() {
         Scanner in = new Scanner(System.in);
@@ -32,7 +36,7 @@ public class PortScanner extends RecursiveAction {
     }
 
     @Override
-    protected void compute() {
+    protected CopyOnWriteArrayList<String> compute() {
 
         if ((this.maxPort - this.minPort) > range) { // Дробим задачи
 
@@ -40,10 +44,12 @@ public class PortScanner extends RecursiveAction {
             newFolk1.fork();
             chekPort(this.minPort, this.minPort+range);
             newFolk1.join();
-            System.out.println(Thread.currentThread().getName()+ " отработал");
+
         } else { // Выполняем сами
             chekPort(this.minPort, this.maxPort);
+
         }
+        return result;
     }
 
     public void chekPort(int minPort, int maxPort) {
@@ -53,7 +59,8 @@ public class PortScanner extends RecursiveAction {
                 Socket socket = new Socket();
                 socket.connect(new InetSocketAddress(IP, i));
                 socket.close();
-                System.out.println(IP + ":" + i + " port is OPEN" + "=========>>>>" + Thread.currentThread().getName());
+                result.add(IP + ":" + i);
+                //System.out.println(IP + ":" + i + " port is OPEN" + "=========>>>>" + Thread.currentThread().getName());
             } catch (Exception ex) {
                 //System.out.println(IP + ":" + i + " CLOSE" + "" + Thread.currentThread().getName());
             }
